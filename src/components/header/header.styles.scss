@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 3px 22px 0px rgba($color: #000000, $alpha: 0.16);
+  padding: 0 2.5vw;
+}
+.logo {
+  font-weight: bold;
+}
+
+.header-options {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+
+  .option {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 20px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 200ms 0s ease-in;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .text-option {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 200ms 0s linear, opacity 200ms 0s linear;
+    }
+  }
+
+  .option:focus {
+    background-color: #f6daad;
+
+    .text-option {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      margin-left: 10px;
+    }
+  }
+}
