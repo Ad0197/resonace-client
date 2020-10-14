@@ -34,6 +34,14 @@
       visibility: hidden;
       opacity: 0;
       transition: visibility 200ms 0s linear, opacity 200ms 0s linear;
+
+      &.last {
+        visibility: visible;
+        display: block;
+        opacity: 1;
+        font-weight: 400;
+        text-decoration: underline;
+      }
     }
   }
 
@@ -45,6 +53,10 @@
       opacity: 1;
       visibility: visible;
       margin-left: 10px;
+
+      &.last {
+        margin-left: 0;
+      }
     }
   }
 }

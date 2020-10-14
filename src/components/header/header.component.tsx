@@ -21,16 +21,16 @@ const Header = (props: any) => {
           <ProfileIcon height="16px" color="black" />
           <p className="text-option">Profile</p>
         </button>
-        <button className="option">
+        <button className="option" onClick={changeRoute("/search")}>
           <SearchIcon height="16px" color="black" />
-          <input className="text-option" placeholder="Search" />
+          <p className="text-option">Search</p>
         </button>
         <button className="option">
           <CartIcon height="16px" color="black" />
           <p className="text-option">Cart</p>
         </button>
         <button className="option">
-          <p>Login</p>
+          <p className="text-option last">login</p>
         </button>
       </div>
     </div>

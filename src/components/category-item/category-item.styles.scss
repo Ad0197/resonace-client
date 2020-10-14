@@ -1,0 +1,29 @@
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-basis: 25%;
+  height: 300px;
+  cursor: pointer;
+
+  &.large {
+    flex-basis: 50% !important;
+    height: 450px;
+  }
+  & .text {
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    padding: 10px 20px;
+    transition: background-color 200ms 0s linear, color 200ms 0s ease-in;
+  }
+
+  &:hover .text {
+    color: #e9a332;
+    background-color: rgba($color: #000000, $alpha: 0.8);
+  }
+}

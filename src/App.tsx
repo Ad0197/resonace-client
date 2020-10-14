@@ -5,6 +5,7 @@ import "./App.scss";
 import { Route, Switch } from "react-router";
 import HomePage from "./pages/home/home.page";
 import ProfilePage from "./pages/profile/profile.page";
+import SearchPage from "./pages/search/search.page";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/search" component={SearchPage} />
       </Switch>
       <Footer />
     </div>
