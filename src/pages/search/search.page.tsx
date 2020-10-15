@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import SearchField from "../../components/search-field/search-field.component";
@@ -8,7 +8,10 @@ import {
   getAllFurnitureFromState,
   isLoading,
 } from "../../redux/furniture/furniture.selector";
-import { findFurnitureByNameAction } from "../../redux/furniture/furniture.actions";
+import {
+  findFurnitureByNameAction,
+  setFurnitureAction,
+} from "../../redux/furniture/furniture.actions";
 
 import "./search.styles.scss";
 
@@ -17,6 +20,10 @@ const SearchPage = () => {
   const [value, setValue] = useState<string | null>("");
   const [fnTrigger, setFnTrigger] = useState<NodeJS.Timeout>();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setFurnitureAction([]));
+  }, [dispatch]);
 
   const isTyping = () => setTyping(true);
   const isNotTyping = () => setTyping(false);

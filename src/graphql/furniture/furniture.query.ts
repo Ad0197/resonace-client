@@ -47,3 +47,21 @@ query FindFurnitureById($id: String!){
   }
 }
 `
+
+export const FIND_FURNITURE_BY_CATEGORY = gql`
+query FindFurnitureByCategory($category: String!){
+  findFurnitureByCategory(
+    category: $category
+  ){
+    id
+    name
+    materialsAndFinishes
+    unitCost
+    inStock
+    settings
+    picture{
+      url
+    }
+  }
+}
+`

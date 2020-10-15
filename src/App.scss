@@ -1,8 +1,19 @@
 .app {
   min-width: 100vw;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  &:first-child {
+    flex-grow: 1;
+    max-height: fit-content;
+  }
+  .body {
+    flex-grow: 8;
+    flex-basis: 90vh;
+  }
+
+  &:last-child {
+    flex-grow: 1;
+    max-height: fit-content;
+  }
 }

@@ -5,8 +5,15 @@ export interface Category {
     img: string,
 }
 
+export interface Setting {
+    id: number,
+    name: string,
+    img: string
+}
+
 export interface CategoryState {
-    categories: Category[]
+    categories: Category[];
+    settings: Setting[];
 }
 
 export const ADD_ALL = 'ADD_ALL';

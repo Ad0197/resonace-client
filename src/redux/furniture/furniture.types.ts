@@ -19,7 +19,6 @@ export const SET_FURNITURE = 'SET_FURNITURE'
 export const START_LOADING = 'START_LOADING'
 export const END_LOADING = 'END_LOADING'
 
-
 export interface SET_FURNITURE {
     type: typeof SET_FURNITURE,
     payload: Furniture[],

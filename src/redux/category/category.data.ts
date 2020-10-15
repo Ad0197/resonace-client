@@ -5,7 +5,6 @@ export default [
         img:
             "https://static01.nyt.com/images/2019/03/03/realestate/03shopping1/03shopping1-superJumbo.jpg",
         path: "/category/chair",
-        size: "large",
     },
     {
         id: 2,
@@ -13,7 +12,6 @@ export default [
         img:
             "https://www.royaloakindia.com/thumbimages/ROYIND-royaloak-melbourne-coffee-table.jpg",
         path: "/category/table",
-        size: "large",
     },
     {
         id: 3,
