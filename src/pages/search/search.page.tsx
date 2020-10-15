@@ -37,23 +37,21 @@ const SearchPage = () => {
 
   const data = useSelector(getAllFurnitureFromState);
   const loading = useSelector(isLoading);
+  const Message = () => <p className="text-typing">Empty search field.</p>;
   return (
     <div className="search-page">
       <SearchField {...{ value, handleChange }} />
       <div>
-        {typing ? <h1 className="text-typing">Typing...</h1> : ""}
-        {loading ? (
-          <h1 className="text-typing">Searching for your items</h1>
-        ) : (
-          ""
-        )}
+        {typing ? <p className="text-typing">Typing...</p> : ""}
+        {loading ? <p className="text-typing">Searching for your items</p> : ""}
         {typing || loading ? (
           ""
         ) : data.length !== 0 ? (
           <GridView data={data.map(mapFromFurnitureToGridItem)} />
         ) : (
-          ""
+          <p className="text-typing"></p>
         )}
+        {!typing && !loading && data.length === 0 ? <Message /> : ""}
       </div>
     </div>
   );
