@@ -4,34 +4,26 @@ import { ReactComponent as HomeIcon } from "../../assets/home.svg";
 import { ReactComponent as ProfileIcon } from "../../assets/profile.svg";
 import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 import { ReactComponent as CartIcon } from "../../assets/cart.svg";
-import { useHistory } from "react-router";
+import MenuOption from "../menu-option/menu-option.component";
 
-const Header = (props: any) => {
-  const history = useHistory();
-  const changeRoute = (path: string) => () => history.push(path);
+const Header: React.FC = () => {
   return (
     <div className="header">
       <div className="logo">RESONANCE PRIVATE</div>
       <div className="header-options">
-        <button className="option" onClick={changeRoute("/")}>
+        <MenuOption path="/" option="Home">
           <HomeIcon height="16px" color="black" />
-          <p className="text-option">Home</p>
-        </button>
-        <button className="option" onClick={changeRoute("/profile")}>
+        </MenuOption>
+        <MenuOption path="/profile" option="Profile">
           <ProfileIcon height="16px" color="black" />
-          <p className="text-option">Profile</p>
-        </button>
-        <button className="option" onClick={changeRoute("/search")}>
+        </MenuOption>
+        <MenuOption path="/search" option="Search">
           <SearchIcon height="16px" color="black" />
-          <p className="text-option">Search</p>
-        </button>
-        <button className="option">
+        </MenuOption>
+        <MenuOption path="/cart" option="Cart">
           <CartIcon height="16px" color="black" />
-          <p className="text-option">Cart</p>
-        </button>
-        <button className="option">
-          <p className="text-option last">login</p>
-        </button>
+        </MenuOption>
+        <MenuOption path="/login" option="login"></MenuOption>
       </div>
     </div>
   );
