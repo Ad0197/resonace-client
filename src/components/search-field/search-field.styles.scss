@@ -1,6 +1,7 @@
 .search-field {
-  padding: 20px 2.5vw;
+  padding: 20px 0;
   & input[type="search"] {
+    color: #999;
     padding: 10px 0;
     border: none;
     border-bottom: 2px solid #999;
@@ -9,11 +10,12 @@
     outline: none;
     font-size: 30px;
     font-weight: bold;
-    transition: border-bottom-color 500ms 0s ease-in-out;
+    transition: border-bottom-color 500ms 0s ease-in-out,
+      color 500ms 0s ease-in-out;
 
     &:focus {
-      border-bottom-color: #E9A332;
-      color: #E9A332;
+      border-bottom-color: #e9a332;
+      color: #e9a332;
     }
   }
 }

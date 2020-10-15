@@ -1,0 +1,8 @@
+.grid-view {
+  max-width: 100%;
+  //   overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 100px;
+  padding: 0 6vw;
+}

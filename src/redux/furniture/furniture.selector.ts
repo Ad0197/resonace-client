@@ -8,3 +8,8 @@ export const getAllFurnitureFromState = createSelector(
     [selectorFurnituresFromState],
     (furnitureState: FurnitureState) => furnitureState.furnitures,
 )
+
+export const isLoading = createSelector(
+    [selectorFurnituresFromState],
+    (furnitureState: FurnitureState) => furnitureState.loading,
+)

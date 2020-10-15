@@ -1,0 +1,75 @@
+.grid-item {
+  font-size: 14px;
+  position: relative;
+  .item {
+    padding: 20px 40px;
+  }
+  &:hover .grid-item-hover {
+    visibility: visible;
+    opacity: 1;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    float: left;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(3px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .button-hover {
+      display: block;
+    }
+  }
+
+  .grid-item-hover {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 200ms 0s ease-in-out, opacity 200ms 0s ease-in-out;
+
+    .button-hover {
+      display: none;
+      font-weight: bold;
+      color: white;
+      background-color: rgba($color: #999, $alpha: 0.6);
+      padding: 10px 30px;
+      cursor: pointer;
+      transition: background-color 200ms 0s linear;
+    }
+
+    .button-hover:hover {
+      display: block;
+      background-color: rgba($color: white, $alpha: 1);
+      color: black;
+    }
+  }
+}
+
+.img-item {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.name-item {
+  font-weight: bold;
+}
+
+.unit-cost-item {
+  min-width: 100px;
+  text-align: right;
+}
+
+.alter {
+  background-color: #f5f3ee;
+}
