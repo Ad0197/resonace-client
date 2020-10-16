@@ -1,3 +1,7 @@
+import { Action } from "redux"
+import { ThunkAction } from "redux-thunk"
+import { RootType } from "../root.reducer"
+
 export interface Furniture {
     id: string,
     name: string,
@@ -34,3 +38,5 @@ export interface END_LOADING {
 
 export type LoadingActionType = START_LOADING | END_LOADING
 export type FurnitureActionType = SET_FURNITURE
+
+export type AsyncFurnitureAction = ThunkAction<void, RootType, unknown, Action<Furniture[]>>

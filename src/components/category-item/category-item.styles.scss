@@ -5,12 +5,10 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  flex-basis: 25%;
   height: 300px;
   cursor: pointer;
 
   &.large {
-    flex-basis: 50% !important;
     height: 450px;
   }
   & .text {

@@ -4,12 +4,12 @@ import { useRouteMatch } from "react-router";
 import { mapFromFurnitureToGridItem } from "../../components/grid-item/grid-item.utils";
 import GridView from "../../components/grid-view/grid-view.component";
 import SettingsView from "../../components/settings-view/settings-view.component";
+import Spinner from "../../components/spinner/spinner.component";
 import { findFurnitureByCategoryAction } from "../../redux/furniture/furniture.actions";
 import {
-  getAllFurnitureFromState,
+  filterFurniteInStateBySetting,
   isLoading,
 } from "../../redux/furniture/furniture.selector";
-import { Furniture } from "../../redux/furniture/furniture.types";
 import "./category.styles.scss";
 
 interface CategoryMatchParams {
@@ -18,34 +18,24 @@ interface CategoryMatchParams {
 }
 
 const CategoryPage: React.FC = () => {
-  const match = useRouteMatch<CategoryMatchParams>();
-  const category = match.params.category;
+  const { category, setting } = useRouteMatch<CategoryMatchParams>().params;
   const dispatch = useDispatch();
-  const setting = match.params.setting;
+  const loading = useSelector(isLoading);
+  const furnitures = useSelector(filterFurniteInStateBySetting(setting));
 
   useEffect(() => {
     dispatch(findFurnitureByCategoryAction(category));
-  }, [category, dispatch]);
-
-  const loading: boolean = useSelector(isLoading);
-  const furnitures: Furniture[] = useSelector(getAllFurnitureFromState).filter(
-    filterFurnitureBySetting(setting)
-  );
+  }, [dispatch, category]);
 
   const data = furnitures.map(mapFromFurnitureToGridItem);
-  return (
+  return loading ? (
+    <Spinner />
+  ) : (
     <div>
       <SettingsView data={furnitures} current={setting} category={category} />
-      {!loading ? <GridView data={data} /> : ""}
+      <GridView data={data} />
     </div>
   );
 };
-
-
-
-function filterFurnitureBySetting(setting?: string) {
-  return (furniture: Furniture) =>
-    setting ? furniture.settings.includes(setting) : true;
-}
 
 export default CategoryPage;

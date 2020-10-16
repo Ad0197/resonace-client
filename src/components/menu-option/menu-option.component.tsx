@@ -8,11 +8,7 @@ type MenuOptionsProps = {
   option: string;
 };
 
-const MenuOption = ({
-  path,
-  children,
-  option,
-}: MenuOptionsProps): JSX.Element => {
+const MenuOption: React.FC<MenuOptionsProps> = ({ path, children, option }) => {
   const location = useLocation().pathname;
   const history = useHistory();
   const changeRoute = (path: string) => () => history.push(path);
