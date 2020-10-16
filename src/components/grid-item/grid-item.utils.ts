@@ -1,4 +1,4 @@
-import { Furniture } from "../../redux/furniture/furniture.types";
+import Furniture from "../../models/furniture.model";
 import GridItem from "./grid-item.component";
 
 export const mapFromFurnitureToGridItem = ({ id, name, inStock, materialsAndFinishes, picture, unitCost }: Furniture): GridItem => ({

@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
+import Furniture from "../../models/furniture.model";
 import { RootType } from "../root.reducer";
-import { Furniture, FurnitureState } from "./furniture.types";
+import { FurnitureState } from "./furniture.types";
 
 const selectorFurnituresFromState = (state: RootType) => state.furniture;
 

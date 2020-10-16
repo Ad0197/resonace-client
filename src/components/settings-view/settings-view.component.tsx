@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { filterSettingsFromFurniture } from "../../redux/category/category.selector";
 import { Setting } from "../../redux/category/category.type";
-import { Furniture } from "../../redux/furniture/furniture.types";
+import Furniture from "../../models/furniture.model";
 import SettingItem from "../setting-item/setting-item.component";
 import "./settings-view.styles.scss";
 

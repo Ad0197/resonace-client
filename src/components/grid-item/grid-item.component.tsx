@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router";
 import "./grid-item.styles.scss";
 
 type GridItem = {
@@ -17,10 +18,12 @@ type GridItemProps = {
 
 const GridItem = ({
   alter,
-  data: { name, picture, unitCost },
+  data: { id, name, picture, unitCost },
 }: GridItemProps): JSX.Element => {
+  const history = useHistory();
+  const changeRoute = () => history.push(`/furniture/${id}`);
   return (
-    <div className={`grid-item ${alter ? "alter" : ""}`}>
+    <div onClick={changeRoute} className={`grid-item ${alter ? "alter" : ""}`}>
       <div className="item">
         <img className="img-item" src={picture} alt="Item On Sell" />
         <div className="info-item">

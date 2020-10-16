@@ -1,5 +1,8 @@
 import React from "react";
 import { useRouteMatch } from "react-router";
+import Spinner from "../../components/spinner/spinner.component";
+import { findFurnitureById } from "../../graphql/furniture/furniture.graphql";
+import useFetch from "../../hooks/useFetch";
 import "./item.styles.scss";
 
 interface ItemPageMatchParams {
@@ -8,15 +11,14 @@ interface ItemPageMatchParams {
 }
 
 const ItemPage = (): JSX.Element => {
-  const match = useRouteMatch<ItemPageMatchParams>();
-  const route = {
-    category: match.params.category,
-    id: match.params.id,
-  };
-  return (
+  const { id, category } = useRouteMatch<ItemPageMatchParams>().params;
+  const { data, error, loading } = useFetch(findFurnitureById(id));
+  return loading ? (
+    <Spinner />
+  ) : (
     <div>
-      <p>{route.category}</p>
-      <p>{route.id}</p>
+      <p>{category}</p>
+      <p>{id}</p>
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import { Action, Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { findFurnitureByCategory, findFurnitureByName, getAllFurniture } from "../../graphql/furniture/furniture.graphql";
+import Furniture from "../../models/furniture.model";
 import { RootType } from "../root.reducer";
-import { AsyncFurnitureAction, END_LOADING, Furniture, FurnitureActionType, LoadingActionType, SET_FURNITURE, START_LOADING } from "./furniture.types"
+import { AsyncFurnitureAction, END_LOADING, FurnitureActionType, LoadingActionType, SET_FURNITURE, START_LOADING } from "./furniture.types"
 
 export const getAllFurnitureAction = (): ThunkAction<void, RootType, unknown, Action<Furniture[]>> => async (dispatch: Dispatch) => {
     const furnitures = await getAllFurniture();

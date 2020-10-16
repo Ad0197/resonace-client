@@ -1,18 +1,7 @@
 import { Action } from "redux"
 import { ThunkAction } from "redux-thunk"
+import Furniture from "../../models/furniture.model"
 import { RootType } from "../root.reducer"
-
-export interface Furniture {
-    id: string,
-    name: string,
-    materialsAndFinishes: string[]
-    unitCost: string
-    inStock: boolean
-    settings: string[]
-    picture: {
-        url: string
-    }[]
-}
 
 export interface FurnitureState {
     furnitures: Furniture[];

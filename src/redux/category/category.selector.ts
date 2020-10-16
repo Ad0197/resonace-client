@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { Furniture } from '../furniture/furniture.types';
+import  Furniture  from '../../models/furniture.model';
 import { RootType } from '../root.reducer';
 import { Setting } from './category.type';
 import { filterSettingsByFurnitureUtils } from './category.utils'

@@ -28,7 +28,7 @@ function App() {
           />
           <Route
             exact
-            path="/category/:category/:setting/:id/"
+            path="/furniture/:id/"
             component={ItemPage}
           />
           <Route exact path="/profile" component={ProfilePage} />

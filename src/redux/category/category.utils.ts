@@ -1,4 +1,4 @@
-import { Furniture } from "../furniture/furniture.types"
+import Furniture from "../../models/furniture.model"
 import { Setting } from "./category.type"
 
 export const filterSettingsByFurnitureUtils = (setting: Setting, furnitures: Furniture[]) => {
