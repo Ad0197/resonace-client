@@ -18,12 +18,15 @@ const Login: React.FC = () => {
   const handlePassword = handleChangeGen(setPassword);
   const handleLogin = (event: React.FormEvent) => {
     event.preventDefault();
-    dispatch(login(email, password, ()=> closeModal ? closeModal() : null));
+    dispatch(login(email, password, () => (closeModal ? closeModal() : null)));
     return false;
   };
-  const handleSignUp = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    history.push('/signup')
-  }
+  const handleSignUp = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    if (closeModal) closeModal();
+    history.push("/signup");
+  };
   return (
     <form onSubmit={handleLogin} className="column login-container">
       <h1>Login</h1>
@@ -44,7 +47,9 @@ const Login: React.FC = () => {
         <button type="submit" className="btn btn-login">
           Login
         </button>
-        <div className="btn btn-signup" onClick={handleSignUp}>Sign Up</div>
+        <div className="btn btn-signup" onClick={handleSignUp}>
+          Sign Up
+        </div>
       </div>
     </form>
   );
