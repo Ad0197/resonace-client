@@ -2,8 +2,13 @@ import { gql } from "graphql-request"
 import User from "../../models/user.model"
 
 export interface LoginResponse {
-    accessToken: string,
-    user: User;
+  accessToken: string,
+  user: User;
+}
+
+export interface RefreshTokenResponse {
+  accessTokne: string,
+  ok: boolean;
 }
 
 export const LOGIN_GRAPHQL = gql`

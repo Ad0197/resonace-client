@@ -6,7 +6,7 @@ type UserGraphQlType = {
     login: LoginResponse;
 }
 
-const client: GraphQLClient = getClientGraphql()
+const client: GraphQLClient = getClientGraphql({ credentials: "same-origin" })
 
 export const loginServer = async (email: string, password: string): Promise<LoginResponse> => {
     const resp = (await client.request<UserGraphQlType, { email: string, password: string }>(LOGIN_GRAPHQL, { email, password })).login

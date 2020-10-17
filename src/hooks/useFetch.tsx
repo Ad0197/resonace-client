@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 function useFetch<T>(
   promise: Promise<any>,
-  callback?: (error: Boolean, data?: T) => void
+  callback?: (error: Boolean, data?: any) => void
 ) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -13,17 +13,20 @@ function useFetch<T>(
   useEffect(() => {
     const loadData = async () => {
       try {
+        const resp = await promise;
         setLoading(true);
-        setData(await promise);
+        setData(await resp);
         setLoading(false);
+        if (callback) callback(error, resp);
       } catch (error) {
         setError(true);
         setLoading(false);
+        if (callback) callback(error, data);
       }
-      if (callback) callback(error, data);
     };
     loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    return () => {}; // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return { loading, error, data };
