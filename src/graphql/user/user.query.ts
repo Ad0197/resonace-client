@@ -6,6 +6,11 @@ export interface LoginResponse {
   user: User;
 }
 
+export interface isStoredResponse {
+  email: boolean,
+  username: boolean,
+}
+
 export interface RefreshTokenResponse {
   accessTokne: string,
   ok: boolean;
@@ -32,5 +37,29 @@ query loginToServer($email: String! $password: String!){
 export const LOGOUT_GRAPHQL = gql`
 query Logout{
   logout
+}
+`
+
+export const IS_STORED = gql`
+query IsStorea($email: String! $username: String!){
+  isStored(email: $email username: $username ){
+    email
+    username
+  }
+}
+`
+
+export const CREATE_USER = gql`
+mutation CreateUserClient($user: UserInput!){
+createClientUser(user:$user){
+  accessToken
+  user{
+    username
+    email
+    lastName
+    firstName
+    id
+  }
+}
 }
 `

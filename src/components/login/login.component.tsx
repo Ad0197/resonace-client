@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { login } from "../../redux/user/user.action";
 import { getCloseModalFromState } from "../../redux/user/user.selector";
 import InputField, {
@@ -10,16 +11,21 @@ import "./login.styles.scss";
 const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
   const dispatch = useDispatch();
   const closeModal = useSelector(getCloseModalFromState);
   const handleEmail = handleChangeGen(setEmail);
   const handlePassword = handleChangeGen(setPassword);
-  const handleLogin = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleLogin = (event: React.FormEvent) => {
     event.preventDefault();
     dispatch(login(email, password, ()=> closeModal ? closeModal() : null));
+    return false;
   };
+  const handleSignUp = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    history.push('/signup')
+  }
   return (
-    <div className="column login-container">
+    <form onSubmit={handleLogin} className="column login-container">
       <h1>Login</h1>
       <InputField
         className="field"
@@ -35,12 +41,12 @@ const Login: React.FC = () => {
         handleChange={handlePassword}
       />
       <div className="row">
-        <div className="btn btn-login" onClick={handleLogin}>
+        <button type="submit" className="btn btn-login">
           Login
-        </div>
-        <div className="btn btn-signup">Sign Up</div>
+        </button>
+        <div className="btn btn-signup" onClick={handleSignUp}>Sign Up</div>
       </div>
-    </div>
+    </form>
   );
 };
 

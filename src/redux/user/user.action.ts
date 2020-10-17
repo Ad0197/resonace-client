@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
-import { loginServer, logoutServer } from "../../graphql/user/user.graphql";
+import { createUser, loginServer, logoutServer } from "../../graphql/user/user.graphql";
 import { LoginResponse } from "../../graphql/user/user.query";
+import User from "../../models/user.model";
 import { endLoading, startLoading } from "../furniture/furniture.actions";
 import { ADD_USER, AsyncUserAction, SET_USER_AND_ACCES_TOKEN, UserActionType, UserState } from "./user.types";
 
@@ -22,7 +23,7 @@ export const setUserAndAccessTokenAction = (userState: UserState): UserActionTyp
 export const logout = (callback?: () => void) => async (dispatch: Dispatch) => {
     dispatch(startLoading());
     await logoutServer();
-    dispatch(setUserAndAccessTokenAction({user: undefined, accessToken: ""}))
+    dispatch(setUserAndAccessTokenAction({ user: undefined, accessToken: "" }))
     dispatch(endLoading());
     if (callback) callback()
 }
@@ -33,4 +34,12 @@ export const login = (email: string, password: string, callback?: () => void): A
     dispatch(setUserAndAccessTokenAction({ accessToken, user }))
     dispatch(endLoading());
     if (callback) callback()
+}
+
+export const createUserAction = (userCreated: User, callback?: () => void) => async (dispatch: Dispatch) => {
+    dispatch(startLoading());
+    const { accessToken, user }: LoginResponse = await createUser(userCreated);
+    dispatch(setUserAndAccessTokenAction({ user, accessToken }))
+    dispatch(endLoading())
+    if (callback) callback();
 }

@@ -13,10 +13,10 @@ interface ItemPageMatchParams {
   id: string;
 }
 
-const ItemPage = (): JSX.Element => {
+const ItemPage: React.FC = () => {
   const { id } = useRouteMatch<ItemPageMatchParams>().params;
   const { data, loading } = useFetch<Furniture>(findFurnitureById(id));
-  return loading ? (
+  return loading || data?.id === undefined  ? (
     <Spinner />
   ) : (
     <div className="item-page">

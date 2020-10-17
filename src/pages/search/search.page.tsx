@@ -11,7 +11,7 @@ import "./search.styles.scss";
 import Spinner from "../../components/spinner/spinner.component";
 import useSearch from "../../hooks/useSearch";
 
-const SearchPage = () => {
+const SearchPage: React.FC = () => {
   const { value, typing, loading, handleChange } = useSearch(
     findFurnitureByNameAction
   );

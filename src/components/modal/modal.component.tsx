@@ -4,17 +4,19 @@ import "./modal.styles.scss";
 type ModalProps = {
   active: boolean;
   disableModal: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  backgroundDisable?: boolean;
 };
 
 const Modal: React.FC<ModalProps> = ({
   children,
   active = false,
   disableModal,
+  backgroundDisable,
 }) => (
   <>
     <div
       className={`modal-background ${active ? "active" : "disable"}`}
-      onClick={disableModal}
+      onClick={backgroundDisable ? undefined : disableModal}
     ></div>
     <div className={`modal ${active ? "active" : "disable"}`}>{children}</div>
   </>

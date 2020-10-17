@@ -17,6 +17,7 @@ import Login from "./components/login/login.component";
 import Axios from "axios";
 import { Dispatch } from "redux";
 import { AddUserStateAction } from "./redux/user/user.action";
+import SingUpPage from "./pages/sign-up/sign-up.page";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +45,7 @@ function App() {
           <Route exact path="/furniture/:id/" component={ItemPage} />
           <Route exact path="/profile" component={ProfilePage} />
           <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/signup" component={SingUpPage} />
         </Switch>
       </div>
       <Footer />

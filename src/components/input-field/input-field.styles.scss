@@ -15,9 +15,31 @@
       border-bottom-color: #e9a332;
       color: #e9a332;
     }
+    input:invalid {
+      border-bottom: 2px solid red;
+      color: red;
+      animation: fadeInBorder 200ms;
+    }
   }
 }
+
+.invalid input {
+  border-bottom: 2px solid red;
+  color: red;
+  animation-name: fadeInBorder;
+  animation-duration: 200ms;
+}
+
 .disable > input {
   background-color: #999;
   border-color: black;
+}
+
+@keyframes fadeInBorder {
+  from {
+    border-color: currentColor;
+  }
+  to {
+    border-color: red;
+  }
 }

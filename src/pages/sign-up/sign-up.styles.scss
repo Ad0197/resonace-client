@@ -1,0 +1,34 @@
+.signup-form {
+  width: 100%;
+  padding: 40px 5vw;
+  .form-field {
+    margin-bottom: 20px;
+  }
+  .row-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .btn {
+    color: white;
+    background-color: #e9a332;
+    padding: 20px 60px;
+    max-width: fit-content;
+  }
+
+  .warning {
+    color: red;
+    font-size: 12px;
+    animation-name: FadeInOpacitiy;
+    animation-duration: 200ms;
+  }
+}
+
+@keyframes FadeInOpacitiy {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

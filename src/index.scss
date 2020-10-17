@@ -43,6 +43,8 @@ code {
   padding: 20px;
   margin: 10px;
   transition: opacity 200ms 0 ease-in-out;
+  border: none;
+  outline: none;
 }
 
 .btn:hover {
@@ -50,4 +52,14 @@ code {
 }
 .btn:focus {
   opacity: 1;
+}
+
+.row .right {
+  align-items: center;
+  justify-content: end;
+}
+
+.row .left {
+  align-items: center;
+  justify-content: left;
 }

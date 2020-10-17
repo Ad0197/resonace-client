@@ -1,13 +1,15 @@
-import React from "react";
+import React, { Ref } from "react";
 import "./input-field.styles.scss";
 
 type InputFieldProps = {
-  value: string;
+  fowardRef?: Ref<HTMLInputElement>;
+  value?: string;
   placeholder?: string;
-  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   disable?: boolean;
   className?: string;
   type?: string;
+  name?: string;
 };
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -17,9 +19,13 @@ const InputField: React.FC<InputFieldProps> = ({
   disable,
   className,
   type = "text",
+  fowardRef,
+  name,
 }) => (
   <div className={`input-field ${disable ? "disable" : ""} ${className}`}>
     <input
+      name={name}
+      ref={fowardRef}
       disabled={disable}
       type={type}
       value={value}

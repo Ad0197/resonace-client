@@ -8,12 +8,12 @@ type useModalType = {
   activeModal: () => void;
 };
 
-const useModal = (): useModalType => {
+const useModal = (backgroundDisable: boolean = false): useModalType => {
   const [active, setActive] = useState<boolean>(false);
   const disableModal = () => setActive(false);
   const activeModal = () => setActive(true);
   const Component: React.FC = ({ children }) => (
-    <Modal active={active} disableModal={disableModal}>
+    <Modal active={active} disableModal={disableModal} backgroundDisable={backgroundDisable}>
       {children}
     </Modal>
   );
