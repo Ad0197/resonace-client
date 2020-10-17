@@ -1,3 +1,5 @@
+import Vendor from "./vendor.model";
+
 export default interface Furniture {
   name: string;
   picture: {
@@ -11,7 +13,7 @@ export default interface Furniture {
   settings: string[];
   size: string;
   notes: string;
-  vendor: string[];
+  vendor: Vendor;
   designer: string[];
   unitsInStore: string;
   totalUnitsSold: number;

@@ -1,0 +1,30 @@
+.product-img {
+  flex-basis: 500px;
+  margin: 20px 0;
+
+  .img-current {
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #999999;
+    height: 400px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.img-show {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .img-option {
+    height: 60px;
+    padding: 10px;
+    border: 1px solid black;
+    margin: 10px;
+    cursor: pointer;
+  }
+}

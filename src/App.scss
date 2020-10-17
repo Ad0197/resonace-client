@@ -17,3 +17,17 @@
     max-height: fit-content;
   }
 }
+.divider {
+  display: block;
+  padding: 20px 5vw;
+  background-color: #f5f3ee;
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

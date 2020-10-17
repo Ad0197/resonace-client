@@ -36,14 +36,39 @@ export const FIND_FURNITURE_BY_NAME = gql`
 export const FIND_FURNITURE_BY_ID = gql`
 query FindFurnitureById($id: String!){
   findFurnitureById( id: $id){
+    id
+    name
+    inStock
+    totalUnitsSold
+    settings
+    designer
+    unitCost
+    materialsAndFinishes
+    unitsInStore
+    description
+    size
+    notes
+    picture{
+      url
+    }
+    vendor{
       name
-      materialsAndFinishes
-      unitCost
-      inStock
-      settings
-      picture{
-       url
+      closestShowroomAddress
+      logo{
+        url
       }
+      catalogLink
+      salesContact{
+        name
+        email
+      }
+    }
+    link
+    grossSales
+    orders
+    schematic{
+      url
+    }
   }
 }
 `

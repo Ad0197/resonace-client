@@ -1,0 +1,26 @@
+.vendor-info {
+  padding: 20px 5vw;
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr;
+  grid-gap: 10px 50px;
+  .link {
+    color: #e9a332;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.request-info {
+  background-color: #e9a332;
+  font-size: 18px;
+  font-weight: bold;
+  max-width: fit-content;
+  margin: 30px 40px;
+  padding: 20px 60px;
+}
+
+.vendor-logo {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}

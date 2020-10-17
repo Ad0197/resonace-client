@@ -1,0 +1,16 @@
+.input-field {
+  & input[type="text"] {
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 5px 15px;
+    margin: 5px 20px;
+    border: 2px solid #999;
+    border-radius: 15px;
+    outline: none;
+  }
+}
+.disable > input {
+  background-color: #999;
+  border-color: black;
+}
