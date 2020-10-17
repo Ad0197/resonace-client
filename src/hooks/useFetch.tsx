@@ -1,23 +1,26 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { endLoading, startLoading } from "../redux/furniture/furniture.actions";
-import { isLoading } from "../redux/furniture/furniture.selector";
+import { useDispatch } from "react-redux";
 
-function useFetch<T>(promise: Promise<any>) {
+function useFetch<T>(
+  promise: Promise<any>,
+  callback?: (error: Boolean, data?: T) => void
+) {
   const [error, setError] = useState(false);
-  const loading = useSelector(isLoading);
-  const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState<T | undefined>(undefined);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const loadData = async () => {
-      dispatch(startLoading());
       try {
+        setLoading(true);
         setData(await promise);
-        dispatch(endLoading());
+        setLoading(false);
       } catch (error) {
         setError(true);
+        setLoading(false);
       }
+      if (callback) callback(error, data);
     };
     loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
