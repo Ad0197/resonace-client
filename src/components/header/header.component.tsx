@@ -27,7 +27,7 @@ const Header: React.FC = () => {
         <MenuOption path="/cart" option="Cart">
           <CartIcon height="16px" color="black" />
         </MenuOption>
-        <MenuOption onClick={showModal} path="/login" option="login">
+        <MenuOption onClick={showModal} option="login">
           <LoginIcon height="16px" width="16px" color="black" />
         </MenuOption>
       </div>

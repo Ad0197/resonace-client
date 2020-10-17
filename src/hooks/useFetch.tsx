@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { endLoading, startLoading } from "../redux/furniture/furniture.actions";
+import { isLoading } from "../redux/furniture/furniture.selector";
 
 function useFetch<T>(
   promise: Promise<any>,
   callback?: (error: Boolean, data?: any) => void
 ) {
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  const loading = useSelector(isLoading);
+  // const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<T | undefined>(undefined);
   const dispatch = useDispatch();
 
@@ -14,13 +17,13 @@ function useFetch<T>(
     const loadData = async () => {
       try {
         const resp = await promise;
-        setLoading(true);
+        dispatch(startLoading());
         setData(await resp);
-        setLoading(false);
+        dispatch(endLoading());
         if (callback) callback(error, resp);
       } catch (error) {
         setError(true);
-        setLoading(false);
+        dispatch(endLoading());
         if (callback) callback(error, data);
       }
     };

@@ -1,0 +1,25 @@
+.login-container {
+  width: 50vw;
+}
+
+.field {
+  margin: 10px 0;
+}
+
+.btn {
+  padding: 15px 0;
+  flex-grow: 5;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-login {
+  color: black;
+  background-color: white;
+  border: 2px solid black;
+}
+
+.btn-signup {
+  color: #e9a332;
+  background-color: black;
+}

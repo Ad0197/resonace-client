@@ -1,4 +1,5 @@
 .modal-background {
+  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,7 +10,10 @@
 }
 
 .modal {
-  position: relative;
+  z-index: 5;
+  position: absolute;
+  top: 25%;
+  left: 25%;
   background-color: white;
   padding: 40px 40px;
   border-radius: 5px;

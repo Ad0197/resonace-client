@@ -1,13 +1,20 @@
 .input-field {
-  & input[type="text"] {
-    color: black;
-    font-weight: bold;
-    font-size: 18px;
-    padding: 5px 15px;
-    margin: 5px 20px;
-    border: 2px solid #999;
-    border-radius: 15px;
+  & input {
+    color: #999;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #999;
+    display: block;
+    width: 100%;
     outline: none;
+    font-size: 16px;
+    transition: border-bottom-color 500ms 0s ease-in-out,
+      color 500ms 0s ease-in-out;
+
+    &:focus {
+      border-bottom-color: #e9a332;
+      color: #e9a332;
+    }
   }
 }
 .disable > input {

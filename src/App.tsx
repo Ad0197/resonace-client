@@ -10,32 +10,25 @@ import CategoryPage from "./pages/category/category.page";
 import ItemPage from "./pages/item/item.page";
 import useModal from "./hooks/useModal";
 import useFetch from "./hooks/useFetch";
-import axios from "axios";
 import { useDispatch } from "react-redux";
-import { AddUserState } from "./redux/user/user.action";
-import { LoginResponse } from "./graphql/user/user.query";
+import { LoginResponse, RefreshTokenResponse } from "./graphql/user/user.query";
 import Spinner from "./components/spinner/spinner.component";
+import Login from "./components/login/login.component";
+import Axios from "axios";
+import { Dispatch } from "redux";
+import { AddUserStateAction } from "./redux/user/user.action";
 
 function App() {
   const dispatch = useDispatch();
   const { Modal, activeModal, disableModal } = useModal();
   const { loading } = useFetch<LoginResponse>(
-    axios.post("http://localhost:5000/refresh_token"),
-    (error, data) => {
-      if (error) {
-        dispatch(AddUserState({ showModalLogin: activeModal, closeModalLogin: disableModal}));
-      }
-      dispatch(
-        AddUserState({
-          accessToken: data?.accessToken,
-          user: data?.user,
-          showModalLogin: activeModal,
-        })
-      );
-    }
+    getInitInfo,
+    callbackFn(dispatch, activeModal, disableModal)
   );
   return loading ? (
-    <Spinner />
+    <div className="center all">
+      <Spinner />
+    </div>
   ) : (
     <div className="app">
       <Header />
@@ -55,10 +48,40 @@ function App() {
       </div>
       <Footer />
       <Modal>
-        <h1>Hola</h1>
+        <Login />
       </Modal>
     </div>
   );
 }
 
+const callbackFn = (
+  dispatch: Dispatch,
+  activeModal: () => void,
+  disableModal: () => void
+) => (error: Boolean, response: any) => {
+  if (error) {
+    dispatch(
+      AddUserStateAction({
+        showModalLogin: activeModal,
+        closeModalLogin: disableModal,
+      })
+    );
+  }
+  dispatch(
+    AddUserStateAction({
+      accessToken: response?.data?.accessToken,
+      user: response?.data?.user,
+      showModalLogin: activeModal,
+      closeModalLogin: disableModal,
+    })
+  );
+};
+
+const getInitInfo = Axios.post<RefreshTokenResponse>(
+  "http://localhost:5000/refresh_token",
+  {},
+  {
+    withCredentials: true,
+  }
+);
 export default App;

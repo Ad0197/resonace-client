@@ -43,6 +43,7 @@ const ProductInfo: React.FC = () => {
         <h1>$ {item?.unitCost}</h1>
         <div className="row">
           <InputField
+            className="field-amt"
             disable={item?.inStock ? false : true}
             value={amount.toString()}
             handleChange={handleChange}

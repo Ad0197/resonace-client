@@ -5,8 +5,9 @@ type InputFieldProps = {
   value: string;
   placeholder?: string;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  disable: boolean;
+  disable?: boolean;
   className?: string;
+  type?: string;
 };
 
 const InputField: React.FC<InputFieldProps> = ({
@@ -15,11 +16,12 @@ const InputField: React.FC<InputFieldProps> = ({
   handleChange,
   disable,
   className,
+  type = "text",
 }) => (
   <div className={`input-field ${disable ? "disable" : ""} ${className}`}>
     <input
       disabled={disable}
-      type="text"
+      type={type}
       value={value}
       placeholder={placeholder}
       onChange={handleChange}
@@ -27,4 +29,11 @@ const InputField: React.FC<InputFieldProps> = ({
   </div>
 );
 
+export function handleChangeGen(fn: Function) {
+  return (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const value = event.target.value;
+    fn(value);
+  };
+}
 export default InputField;

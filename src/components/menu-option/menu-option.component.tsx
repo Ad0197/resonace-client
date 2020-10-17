@@ -17,14 +17,14 @@ const MenuOption: React.FC<MenuOptionsProps> = ({
 }) => {
   const location = useLocation().pathname;
   const history = useHistory();
-  const changeRoute = (path: string) => () => history.push(path);
+  const changeRoute = (path: string) => history.push(path);
   return (
     <button
       className={`${location === path ? "current" : "option"}`}
       onClick={(event) => {
         event.preventDefault();
-        if (onClick) onClick();
         if (path) changeRoute(path);
+        if (onClick) onClick();
       }}
     >
       {children}
