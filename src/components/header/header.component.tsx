@@ -6,8 +6,11 @@ import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 import { ReactComponent as CartIcon } from "../../assets/cart.svg";
 import { ReactComponent as LoginIcon } from "../../assets/login.svg";
 import MenuOption from "../menu-option/menu-option.component";
+import { getShowModalFromState } from "../../redux/user/user.selector";
+import { useSelector } from "react-redux";
 
 const Header: React.FC = () => {
+  const showModal = useSelector(getShowModalFromState)
   return (
     <div className="header">
       <div className="logo">RESONANCE PRIVATE</div>
@@ -24,7 +27,7 @@ const Header: React.FC = () => {
         <MenuOption path="/cart" option="Cart">
           <CartIcon height="16px" color="black" />
         </MenuOption>
-        <MenuOption path="/login" option="login">
+        <MenuOption onClick={showModal} path="/login" option="login">
           <LoginIcon height="16px" width="16px" color="black" />
         </MenuOption>
       </div>

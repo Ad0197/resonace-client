@@ -5,7 +5,9 @@ import { RootType } from "../root.reducer";
 
 export type UserState = {
     user?: User;
-    accessToken?: string
+    accessToken?: string;
+    showModalLogin?: () => void;
+    closeModalLogin?: () => void;
 }
 
 export const ADD_USER = "ADD_USER";

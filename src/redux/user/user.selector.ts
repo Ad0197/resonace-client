@@ -12,3 +12,13 @@ export const getAccessTokenFromState = createSelector(
     [selectUserFromState],
     (stateUser) => stateUser.accessToken,
 )
+
+export const getShowModalFromState = createSelector(
+    [selectUserFromState],
+    (stateUser) => stateUser.showModalLogin
+)
+
+export const getCloseModalFromState = createSelector(
+    [selectUserFromState],
+    stateUser => stateUser.closeModalLogin
+)

@@ -3,6 +3,8 @@ import { ADD_USER, REFRESH_TOKEN, UserActionType, UserState } from "./user.types
 const INITIAL_STATE: UserState = {
     user: undefined,
     accessToken: "",
+    showModalLogin: () => { },
+    closeModalLogin: () => { }
 }
 
 export default (state: UserState = INITIAL_STATE, action: UserActionType) => {
