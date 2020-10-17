@@ -17,8 +17,9 @@ const Modal: React.FC<ModalProps> = ({
     <div
       className={`modal-background ${active ? "active" : "disable"}`}
       onClick={backgroundDisable ? undefined : disableModal}
-    ></div>
-    <div className={`modal ${active ? "active" : "disable"}`}>{children}</div>
+    >
+      <div className={`modal ${active ? "active" : "disable"}`}>{children}</div>
+    </div>
   </>
 );
 

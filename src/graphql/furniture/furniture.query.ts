@@ -73,6 +73,12 @@ query FindFurnitureById($id: String!){
 }
 `
 
+export const REQUEST_MORE_INFO = gql`
+query requestMoreInfo($email: String! $idProduct: String!){
+  requestMoreInfo(email:$email, idProduct: $idProduct)
+}
+`;
+
 export const FIND_FURNITURE_BY_CATEGORY = gql`
 query FindFurnitureByCategory($category: String!){
   findFurnitureByCategory(

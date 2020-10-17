@@ -1,12 +1,23 @@
 import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ProductContext, {
   ProductContextType,
 } from "../../context/product.context";
+import { requestMoreInfoAction } from "../../redux/furniture/furniture.actions";
+import { getUserFromState } from "../../redux/user/user.selector";
 import "./vendor-info.styles.scss";
 
 const VendorInfo: React.FC = () => {
-  const { vendor }: ProductContextType = useContext(ProductContext);
-  console.log(vendor);
+  const {
+    vendor,
+    item,
+    isRequestCorrectly,
+    isRequestNotCorrectly,
+    openModal,
+    closeModa,
+  }: ProductContextType = useContext(ProductContext);
+  const dispatch = useDispatch();
+  const user = useSelector(getUserFromState);
   return (
     <React.Fragment>
       <div className="vendor-info">
@@ -48,7 +59,33 @@ const VendorInfo: React.FC = () => {
         </div>
       </div>
       <div className="center">
-        <p className="btn request-info">Request More Information</p>
+        <p
+          className="btn request-info"
+          onClick={() => {
+            if (user?.email && item?.id) {
+              dispatch(
+                requestMoreInfoAction(user.email, item.id, (error) => {
+                  if (error) {
+                    isRequestNotCorrectly();
+                  }
+                  isRequestCorrectly();
+                  openModal();
+                  setTimeout(() => {
+                    closeModa();
+                  }, 2000);
+                })
+              );
+            } else {
+              isRequestNotCorrectly();
+              openModal();
+              setTimeout(() => {
+                closeModa();
+              }, 2000);
+            }
+          }}
+        >
+          Request More Information
+        </p>
       </div>
     </React.Fragment>
   );

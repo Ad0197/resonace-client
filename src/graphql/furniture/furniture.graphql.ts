@@ -1,7 +1,7 @@
 import { GraphQLClient } from 'graphql-request';
 import Furniture from '../../models/furniture.model';
 import getClientGraphql from '../client.graphql'
-import { FIND_FURNITURE_BY_CATEGORY, FIND_FURNITURE_BY_ID, FIND_FURNITURE_BY_NAME, GET_ALL_FURNITURE } from './furniture.query'
+import { FIND_FURNITURE_BY_CATEGORY, FIND_FURNITURE_BY_ID, FIND_FURNITURE_BY_NAME, GET_ALL_FURNITURE, REQUEST_MORE_INFO } from './furniture.query'
 
 const client: GraphQLClient = getClientGraphql();
 
@@ -10,6 +10,7 @@ type FurnitureGraphQLType = {
     findFurnitureByName?: Furniture[];
     findFurnitureByCategory?: Furniture[];
     findFurnitureById?: Furniture;
+    requestMoreInfo: boolean;
 }
 
 export const getAllFurniture = async (): Promise<Furniture[]> => {
@@ -29,4 +30,8 @@ export const findFurnitureByCategory = async (category: String): Promise<Furnitu
 
 export const findFurnitureById = async (id: String): Promise<Furniture | undefined> => {
     return (await client.request<FurnitureGraphQLType, { id: String }>(FIND_FURNITURE_BY_ID, { id }))?.findFurnitureById;
+}
+
+export const requestMoreInfo = async (email: string, id: string): Promise<boolean> => {
+    return (await client.request<FurnitureGraphQLType, { email: string, idProduct: string }>(REQUEST_MORE_INFO, { email, idProduct: id })).requestMoreInfo;
 }

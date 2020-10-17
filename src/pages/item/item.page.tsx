@@ -16,7 +16,7 @@ interface ItemPageMatchParams {
 const ItemPage: React.FC = () => {
   const { id } = useRouteMatch<ItemPageMatchParams>().params;
   const { data, loading } = useFetch<Furniture>(findFurnitureById(id));
-  return loading || data?.id === undefined  ? (
+  return loading || data?.id === undefined ? (
     <Spinner />
   ) : (
     <div className="item-page">

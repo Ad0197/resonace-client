@@ -4,7 +4,6 @@ import Footer from "./components/footer/footer.component";
 import "./App.scss";
 import { Route, Switch } from "react-router";
 import HomePage from "./pages/home/home.page";
-import ProfilePage from "./pages/profile/profile.page";
 import SearchPage from "./pages/search/search.page";
 import CategoryPage from "./pages/category/category.page";
 import ItemPage from "./pages/item/item.page";
@@ -21,7 +20,7 @@ import SingUpPage from "./pages/sign-up/sign-up.page";
 
 function App() {
   const dispatch = useDispatch();
-  const { Modal, activeModal, disableModal } = useModal();
+  const { Modal, activeModal, disableModal } = useModal(true);
   const { loading } = useFetch<LoginResponse>(
     getInitInfo,
     callbackFn(dispatch, activeModal, disableModal)
@@ -43,7 +42,6 @@ function App() {
             component={CategoryPage}
           />
           <Route exact path="/furniture/:id/" component={ItemPage} />
-          <Route exact path="/profile" component={ProfilePage} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/signup" component={SingUpPage} />
         </Switch>
