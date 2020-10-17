@@ -6,7 +6,7 @@ type MenuOptionsProps = {
   path?: string;
   children?: JSX.Element[] | JSX.Element;
   option: string;
-  onClick?: () => void;
+  onClick?: Function;
 };
 
 const MenuOption: React.FC<MenuOptionsProps> = ({

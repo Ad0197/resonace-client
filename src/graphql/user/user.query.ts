@@ -27,5 +27,10 @@ query loginToServer($email: String! $password: String!){
     }
   }
 }
+`
 
+export const LOGOUT_GRAPHQL = gql`
+query Logout{
+  logout
+}
 `

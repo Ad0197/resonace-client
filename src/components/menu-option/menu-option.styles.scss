@@ -6,7 +6,7 @@
   padding: 20px 20px;
   font-size: 14px;
   font-weight: bold;
-  transition: background-color 200ms 0s ease-in;
+  transition: background-color 200ms 20ms ease-in;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -16,7 +16,7 @@
     display: none;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 200ms 0s linear, opacity 200ms 0s linear;
+    transition: visibility 200ms 200ms linear, opacity 200ms 200ms linear;
 
     &.last {
       visibility: visible;
@@ -50,7 +50,7 @@
   padding: 20px 20px;
   font-size: 14px;
   font-weight: bold;
-  transition: background-color 200ms 0s ease-in;
+  transition: background-color 200ms 0ms ease-in;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

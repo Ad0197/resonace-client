@@ -1,4 +1,4 @@
-import { ADD_USER, REFRESH_TOKEN, UserActionType, UserState } from "./user.types";
+import { ADD_USER, REFRESH_TOKEN, SET_USER_AND_ACCES_TOKEN, UserActionType, UserState } from "./user.types";
 
 const INITIAL_STATE: UserState = {
     user: undefined,
@@ -7,13 +7,16 @@ const INITIAL_STATE: UserState = {
     closeModalLogin: () => { }
 }
 
-export default (state: UserState = INITIAL_STATE, action: UserActionType) => {
+export default (state: UserState = INITIAL_STATE, action: UserActionType): UserState => {
     switch (action.type) {
         case ADD_USER:
-            return { ...action.payload }
+            return action.payload
+
+        case SET_USER_AND_ACCES_TOKEN:
+            return { ...state, user: action.payload?.user, accessToken: action.payload?.accessToken }
 
         case REFRESH_TOKEN:
-            return { accessToken: action.payload.accessToken, ...state }
+            return { ...state, accessToken: action.payload.accessToken, }
         default:
             return state
     }

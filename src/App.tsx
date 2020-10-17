@@ -83,5 +83,8 @@ const getInitInfo = Axios.post<RefreshTokenResponse>(
   {
     withCredentials: true,
   }
-);
+).then((resp) => {
+  console.log(resp.data);
+  return resp;
+});
 export default App;
