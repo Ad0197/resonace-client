@@ -4,6 +4,7 @@ import { ReactComponent as HomeIcon } from "../../assets/home.svg";
 import { ReactComponent as ProfileIcon } from "../../assets/profile.svg";
 import { ReactComponent as SearchIcon } from "../../assets/search.svg";
 import { ReactComponent as CartIcon } from "../../assets/cart.svg";
+import { ReactComponent as LoginIcon } from "../../assets/login.svg";
 import MenuOption from "../menu-option/menu-option.component";
 
 const Header: React.FC = () => {
@@ -23,7 +24,9 @@ const Header: React.FC = () => {
         <MenuOption path="/cart" option="Cart">
           <CartIcon height="16px" color="black" />
         </MenuOption>
-        <MenuOption path="/login" option="login"></MenuOption>
+        <MenuOption path="/login" option="login">
+          <LoginIcon height="16px" width="16px" color="black" />
+        </MenuOption>
       </div>
     </div>
   );
